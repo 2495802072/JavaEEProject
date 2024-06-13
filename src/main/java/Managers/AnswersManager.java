@@ -77,7 +77,7 @@ public class AnswersManager {
         PreparedStatement preparedStatement = connect.prepareStatement("INSERT INTO answer(owner_id, answer, question_id) VALUE (?,?,?)");
         preparedStatement.setInt(1, answer.getOwner_id());
         preparedStatement.setString(2, answer.getAnswer());
-        preparedStatement.setInt(2, answer.getQuestion_id());
+        preparedStatement.setInt(3, answer.getQuestion_id());
         preparedStatement.executeUpdate();
 
         jdbc.close(connect,preparedStatement,null,null);

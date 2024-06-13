@@ -180,7 +180,7 @@
 
                                     out.println("<p class='text-truncate'>创建时间："+a.getDate()+"</p>");
                                     out.println("<hr>");
-                                    out.println("<p>"+a.getAnswer()+"</p>");
+                                    out.println("<p style='white-space: pre-wrap;'>"+a.getAnswer()+"</p>");
                                     out.println("</div>");
                                 }
                             }else{
@@ -193,7 +193,9 @@
                 </div>
                 <!-- 输入框 -->
                 <div class="answer_line">
-                    <form class="input-group">
+                    <form class="input-group" action="answerAdd-servlet">
+                        <input style="display: none" name="user_id" value="<%=user == null?null:user.getUid()%>">
+                        <input style="display: none" name="question_id" value="<%=question_id_s%>">
                         <span class="input-group-text" id="answer_line1">※</span>
                         <input type="text" class="form-control" placeholder="参与回答" aria-label="参与回答" aria-describedby="answer_line1" name="answer_text">
                         <button type="submit" class="input-group-text btn btn-outline-dark" aria-describedby="answer_line1"

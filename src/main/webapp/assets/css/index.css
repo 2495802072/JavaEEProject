@@ -296,6 +296,7 @@
         height: 95%;
         margin: 10px;
         width: 30%;
+        min-width: 250px;
         padding: 6px;
         color: #e1c68b;
         border: 2px solid #e1c68b;
