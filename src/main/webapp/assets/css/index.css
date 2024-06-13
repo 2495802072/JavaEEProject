@@ -1,0 +1,349 @@
+/* 一些杂七杂八的通用样式配置 */
+    body{
+        background: url(../Art/image/奶油白纹理.jpeg);
+    }
+    #app {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .copyright {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-top: 1px solid #ccc;
+        font-size: small;
+    }
+    /* TODO 悬浮字 */
+    .BoxTODO {
+        position: absolute;
+        top: 0;left: 0;right: 0;bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        z-index: 10;
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bolder;
+        padding: 200px 10px 10px 10px;
+    }
+
+    .list-group {
+        --bs-list-group-color: #e1c68b;
+        --bs-list-group-bg: #4c515d;
+        --bs-list-group-border-color: #4c515d;
+    }
+    .text-left{
+        text-align: left;
+    }
+    .welcome{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        top: 0;left: 0;right: 0;bottom: 0;
+        background-color: rgba(76, 81, 93, 0.8);
+        color: #e1c68b;
+        padding: 10px;
+        font-size: xx-large;
+        z-index: 10;
+    }
+    .clock_face1{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        height: 380px;
+        width: 380px;
+        position: relative;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 8px dashed #e1c68b;
+        animation: rotation 20s infinite linear;
+        animation-play-state: running;
+        animation-direction: reverse;
+    }
+    .clock_face2{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        height: 340px;
+        width: 340px;
+        position: relative;
+        border-radius: 50%;
+        background-color: #4c515d;
+        border: 8px dashed #e1c68b;
+        animation: rotation 10s infinite linear;
+        animation-play-state: running;
+    }
+    .time-now {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        text-align: center;
+        color: #e1c68b;
+        animation: rotation 20s infinite linear;
+        animation-play-state: running;
+        animation-direction: reverse;
+    }
+    .mt-8{
+        margin-top: 88px;
+    }
+
+
+
+/*  top_nav  */
+    .top_nav {
+        background-color: #4c515d;
+        padding: 0;
+    }
+
+    .top_nav>div {
+        padding-right: 0;
+    }
+    .top_nav>div>img{
+        box-shadow: 3px 3px 2px #c8c8c8;
+        border-radius: 10px;
+        border: 1px solid #c8c8c8;
+    }
+    .top_nav>div>div>div>ul {
+        position: relative;
+        width: 70%;
+        padding-right: 0;
+        background-color: #4c515d;
+    }
+
+    .top_nav li {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        text-align: center;
+        margin: 0 auto;
+        font-weight: bold;
+        line-height: 25px;
+        font-size: 20px;
+    }
+
+    .top_nav li>a {
+        color: #e1c68b;
+    }
+
+    .top_nav li>a:hover {
+        color: #fff;
+    }
+
+    @media (max-width:768px) {
+        .top_nav>div>div>div>ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        .top_nav li {
+            width: 100%;
+            margin: auto 0;
+            text-align: center;
+        }
+
+        .top_nav .offcanvas {
+            width: 80%;
+        }
+
+        .top_nav .offcanvas-body {
+            background-color: #4c515d;
+        }
+
+        .top_nav {
+            height: 66px;
+        }
+
+        .top_nav .offcanvas-header {
+            background-color: #e1c68b;
+        }
+    }
+
+
+
+/* 登录/注册 */
+    /*悬浮窗*/
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+    }
+    .form_overlay_box {
+        /* 弹窗样式 */
+        background-color: #c3c3c3;
+        border-radius: 10px;
+        padding: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1002;
+        min-width: 500px;
+    }
+    .form_overlay_box>form{
+        background: url(../Art/image/奶油白纹理.jpeg);
+        padding: 20px;
+    }
+
+    .form_overlay_box label {
+        width: 80px;
+    }
+
+    [class$="Error"] {
+        display: none;
+        color: #f00;
+    }
+
+    .form_overlay_box a {
+        width: 80px;
+        margin: 4px;
+        border: 1px solid #fff;
+    }
+
+
+
+/*头像*/
+    .head_portrait>img{
+        border: 2px solid #c3c3c3;
+        border-radius: 50%;
+        max-height: 40px;
+        background-color: #004150;
+    }
+
+
+
+/*主要显示框*/
+    .main_box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        left: 23%;
+        top: 100px;
+        right: 5%;
+        bottom: 50px;
+        border: 5px double #fff;
+        border-radius: 5%;
+        padding: 20px;
+    }
+    .main_box>div{
+        height: 100%;
+        width: 50%;
+        border: 3px solid #fff;
+        padding: 8px;
+    }
+    .main_left{
+        display: flex;
+        flex-direction: column;
+        border-radius: 5% 0 0 5%;
+        flex: 1;
+        max-width: 300px;
+        min-width: 200px;
+        background-color: #4c515d;
+        color: #e1c68b;
+    }
+    .main_right{
+        /* padding-left: 0px !important; */
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        border-radius: 0 5% 5% 0;
+        flex: 3;
+        /* background-color: #fff; */
+    }
+    .main_box>.main_right>.title {
+        height: 50px;
+        width: 100%;
+        border-radius: 0 27px 0 0;
+        background-color: #e1c68b;
+    }
+    .main_box>.main_right>.details {
+
+        position: relative; /* For BoxTODO  */
+
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 27px 0;
+    }
+    .main_box>.main_right>.answer_line{
+        width: 100%;
+    }
+    .answers_list{
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    /* 设置滑块 */
+    .answers_list::-webkit-scrollbar-thumb:hover {
+        background: #fff;
+    }
+    .answers_list::-webkit-scrollbar{
+        height: 10px;
+    }
+    .answers_list::-webkit-scrollbar-thumb {
+        background-color: #e1c68b;
+    }
+    .answer_item{
+        display: inline-block;
+        height: 95%;
+        margin: 10px;
+        width: 30%;
+        padding: 6px;
+        color: #e1c68b;
+        border: 2px solid #e1c68b;
+    }
+    .page_button button{
+        color: #e1c68b;
+        background-color: rgba(0, 0, 0, 0.0);
+        border: 1px solid #fff;
+    }
+    .page_button button:hover{
+        background-color: #e1c68b;
+        color: #4c515d;
+    }
+
+
+
+/* 左侧菜单 */
+    .menu{
+        position: fixed;
+        left: 0px;
+        top: 100px;
+        bottom: 50px;
+        width: 20%;
+        border: 3px solid #fff;
+        border-radius: 0 15px 15px 0;
+        background-color: #c3c3c3;
+        padding: 15px 4px 15px 4px;
+    }
+    .menu_div1{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 5px;
+        width: 100%;
+        height: 100%;
+        background-color: #4c515d;
+        box-shadow: -1px -1px #fff;
+    }
+
+/* 动画 */
+    /* 帧动画 */
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }

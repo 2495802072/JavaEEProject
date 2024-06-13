@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区问答</title>
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="assets/js/vue.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/index.css">
+
+    <script>
+        $(document).ready(function () {
+            console.log(answers_list.data().answers.length);
+            var s = [{
+                owner: "User_name",
+                answer_text: "样例",
+                date: "2024.6.1"
+            }];
+            var newObject = {
+                owner: "New_owner",
+                answer_text: "New_answer",
+                date: "2024.6.13"
+            }
+            s.push(newObject);
+            console.log(s.length);
+
+
+            answers_list.data().answers.push(newObject);
+            console.log(answers_list.data().answers.length);
+        })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 登录/注册弹窗 -->
+        <div id="OverlayBox" class="overlay" @click="closePopup('OverlayBox')">
+            <!-- 表单内容 -->
+            <component v-bind:is="displayOverlay"></component>
+        </div>
+
+        <!--顶部导航栏-->
+        <nav class="navbar fixed-top navbar-expand-md top_nav">
+            <div class="container-fluid">
+                <img class="navbar-brand" src="assets\Art\image\学无止境.png" alt="LOGO">
+                <!-- 收束按钮-->
+                <button style="background-color: #e1c68b;" class="navbar-toggler" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">导航栏</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">其他</a>
+                            </li>
+                            <!--搜suo框-->
+                            <li class="nav-item " style="flex: 1;">
+                                <form class="input-group">
+                                    <span class="input-group-text" id="search1">🔍</span>
+                                    <input type="text" class="form-control" placeholder="关键词/标题" aria-label="关键词/标题"
+                                        aria-describedby="search1">
+                                    <button type="submit" class="input-group-text btn btn-outline-light"
+                                        aria-describedby="search1">搜索</button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <component v-bind:is="displayButton"></component>
+                            </li>
+                            <li class="nav-item head_portrait">
+                                <img src="assets/Art/image/默认头像.png" alt="头像">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- 右侧主体box -->
+        <div class="main_box">
+            <!-- 左半 -->
+            <div class="main_left">
+                <!-- 列表 -->
+                <ol id="search" class="list-group list-group-numbered">
+                    <li class="list-group-item d-flex justify-content-between align-items-start btn m-1">
+                        <div class="ms-2 me-auto text-truncate">
+                            <div class="fw-bold">标题</div>
+                            信息概要
+                        </div>
+                        <span class="badge bg-primary rounded-pill">1</span><!--信息提示-->
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start btn m-1">
+                        <div class="ms-2 me-auto text-truncate">
+                            <div class="fw-bold">标题</div>
+                            信息概要
+                        </div>
+                        <span class="badge bg-primary rounded-pill">1</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start btn m-1">
+                        <div class="ms-2 me-auto text-truncate">
+                            <div class="fw-bold">标题</div>
+                            信息概要
+                        </div>
+                        <span class="badge bg-primary rounded-pill">1</span>
+                    </li>
+                </ol>
+                <hr style="margin-top: auto;">
+                <div class="d-flex w-100 p-1 justify-content-around page_button">
+                    <button>上一页</button>
+                    <button>当前页</button>
+                    <button>下一页</button>
+                </div>
+
+            </div>
+            <!-- 右半 -->
+            <div class="main_right">
+                <div class="title d-flex justify-content-center flex-column">
+                    <label class="text-md-start text-sm-center fs-4 text-warning-emphasis text-truncate">标题</label>
+                </div>
+                <!-- 内容/细节 -->
+                <div class="details">
+                    <div class="welcome">
+                        <div class="clock_face1"><div class="clock_face2">
+                            <div class="time-now">
+                                <div>{{ currentDate }}</div>
+                                <div>{{ currentTime }}</div>
+                            </div>
+                        </div></div>
+                    </div>
+                </div>
+                <!-- 输入框 -->
+                <div class="answer_line">
+                    <form class="input-group">
+                        <span class="input-group-text" id="answer_line1">※</span>
+                        <input type="text" class="form-control" placeholder="参与回答" aria-label="参与回答"
+                            aria-describedby="answer_line1">
+                        <button type="submit" class="input-group-text btn btn-outline-dark"
+                            aria-describedby="answer_line1" style="border-radius: 0 0 27px;">Enter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 左侧box -->
+        <div class="menu">
+            <div class="menu_div1">
+                <div class="btn-group-vertical w-100" role="group" aria-label="Vertical radio toggle button group">
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-light" for="vbtn-radio1">热门问题</label>
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off">
+                    <label class="btn btn-outline-light" for="vbtn-radio2">我的提问</label>
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
+                    <label class="btn btn-outline-light" for="vbtn-radio3">我的回答</label>
+                </div>
+                <div style="flex: 10;"></div><!--隔断-->
+                <div class="w-100">
+                    <button class="btn btn-outline-warning w-100" @click="openPopup('OverlayBox'),showOverlay('newQuestion')">＋&nbsp;新建&nbsp;&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        &copy; 2024 秦彦悦（顾霖轩）  版权所有 
+    </div>
+
+    <!--Vue-->
+    <script src="assets/js/index.js"></script> <!-- mainVue --> 
+
+</body>
+
+</html>
